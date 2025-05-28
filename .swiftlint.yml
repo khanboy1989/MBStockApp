@@ -1,0 +1,64 @@
+disabled_rules:
+  - trailing_whitespace
+  - identifier_name
+  - cyclomatic_complexity
+  - comment_spacing
+  - empty_count
+  - type_name
+  - force_cast
+  - force_try
+  - empty_enum_arguments
+  - switch_case_on_newline
+  - blanket_disable_command
+  - empty_parentheses_with_trailing_closure
+  - nesting
+  - multiple_closures_with_trailing_closure
+  - notification_center_detachment
+  - inclusive_language
+  - superfluous_disable_command
+  - unavailable_function
+  - closure_spacing
+  - trailing_comma
+  - closure_end_indentation
+  - modifier_order
+  - attribute_name_spacing
+  - redundant_discardable_let
+  - control_statement
+  - unused_closure_parameter
+  - no_numbers_in_variable_names
+  - switch_case_alignment
+  
+opt_in_rules:
+  - closure_end_indentation
+  - closure_spacing
+  - contains_over_first_not_nil
+  - empty_string
+  - fallthrough
+  - first_where
+  - literal_expression_end_indentation
+  - modifier_order
+  - multiline_function_chains
+  - multiline_parameters
+  - operator_usage_whitespace
+  - private_action
+  - private_outlet
+  - switch_case_on_newline
+  - unavailable_function
+
+excluded:
+  - Pods
+  - build*/
+  - Models
+
+# Custom Rules
+line_length: 200
+file_length: 550
+function_body_length: 100
+type_body_length: 300
+
+custom_rules:
+  no_numbers_in_variable_names:
+    name: "No Numbers in Variable Names"
+    regex: "var\\s+[a-zA-Z_]+[0-9]+"
+    message: "Variable names should not contain numbers, only letters are allowed."
+    severity: warning

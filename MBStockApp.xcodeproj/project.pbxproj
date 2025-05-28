@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EBF5F02F2DE6EA5A00AC38A8 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = EBF5F02E2DE6EA5A00AC38A8 /* Swinject */; };
+		EBF5F0342DE6ECAF00AC38A8 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EBF5F0332DE6ECAF00AC38A8 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		EB6F3AC92DE6DD5F002A1395 /* MBStockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBStockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F3AD62DE6DD62002A1395 /* MBStockAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBStockAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F3AE02DE6DD62002A1395 /* MBStockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBStockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBF5F0332DE6ECAF00AC38A8 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -93,6 +95,7 @@
 		EB6F3AC02DE6DD5F002A1395 = {
 			isa = PBXGroup;
 			children = (
+				EBF5F0332DE6ECAF00AC38A8 /* .swiftlint.yml */,
 				EB6F3B032DE6E225002A1395 /* MBStockApp */,
 				EB6F3AD92DE6DD62002A1395 /* MBStockAppTests */,
 				EB6F3AE32DE6DD62002A1395 /* MBStockAppUITests */,
@@ -236,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF5F0342DE6ECAF00AC38A8 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,8 +276,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "export PATH=/opt/homebrew/bin:$PATH\nif which swiftlint > /dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, please install it using 'brew install swiftlint'\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -443,6 +446,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 84Q4DGLFH4;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -476,6 +480,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 84Q4DGLFH4;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
