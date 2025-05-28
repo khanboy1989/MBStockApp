@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EBF5F02F2DE6EA5A00AC38A8 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = EBF5F02E2DE6EA5A00AC38A8 /* Swinject */; };
-		EBF5F0342DE6ECAF00AC38A8 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EBF5F0332DE6ECAF00AC38A8 /* .swiftlint.yml */; };
+		EBF5F03A2DE7014A00AC38A8 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EBF5F0392DE7014A00AC38A8 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 		EB6F3AC92DE6DD5F002A1395 /* MBStockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBStockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F3AD62DE6DD62002A1395 /* MBStockAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBStockAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F3AE02DE6DD62002A1395 /* MBStockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBStockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBF5F0332DE6ECAF00AC38A8 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		EBF5F0392DE7014A00AC38A8 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -95,7 +95,7 @@
 		EB6F3AC02DE6DD5F002A1395 = {
 			isa = PBXGroup;
 			children = (
-				EBF5F0332DE6ECAF00AC38A8 /* .swiftlint.yml */,
+				EBF5F0392DE7014A00AC38A8 /* .swiftlint.yml */,
 				EB6F3B032DE6E225002A1395 /* MBStockApp */,
 				EB6F3AD92DE6DD62002A1395 /* MBStockAppTests */,
 				EB6F3AE32DE6DD62002A1395 /* MBStockAppUITests */,
@@ -239,7 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF5F0342DE6ECAF00AC38A8 /* .swiftlint.yml in Resources */,
+				EBF5F03A2DE7014A00AC38A8 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
