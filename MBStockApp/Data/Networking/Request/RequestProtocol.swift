@@ -22,7 +22,10 @@ extension RequestProtocol {
     }
     
     var params: [String: Any] {
-        return [:]
+        return [
+            "x-rapidapi-host" : "yh-finance.p.rapidapi.com",
+            "x-rapidapi-key" : "6f15681763msh59505b6679bcef7p10be06jsnc8a23a9d3dd2"
+        ]
     }
     
     var urlParams: [String: String?] {

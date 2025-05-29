@@ -5,7 +5,7 @@
 //  Created by Serhan Khan on 29/05/2025.
 //
 
-struct BaseResponseModel<T: Codable>: Codable {
+struct BaseResponse<T> {
     let code: Int
     let status: String
     let data: T
