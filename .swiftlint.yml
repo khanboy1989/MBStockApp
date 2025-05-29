@@ -21,7 +21,6 @@ disabled_rules:
   - trailing_comma
   - closure_end_indentation
   - modifier_order
-  - attribute_name_spacing
   - redundant_discardable_let
   - control_statement
   - unused_closure_parameter

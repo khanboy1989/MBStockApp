@@ -9,4 +9,5 @@ import Foundation
 
 enum ApiConstants {
     static let baseURL: String = ""
+    static let refreshRate: Double = 8.0
 }
