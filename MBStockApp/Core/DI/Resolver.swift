@@ -21,7 +21,11 @@ class Resolver {
     ///
     /// > It should be called only once in the app's lifecycle
     @MainActor func injectModules() {
-        
+        injectUtils()
+        injectDataSources()
+        injectRepositories()
+        injectUseCases()
+        injectViewModels()
     }
     
     /// This method is responsible for resolving a dependency
@@ -41,8 +45,26 @@ extension Resolver {
 }
 
 extension Resolver {
-    
     private func injectDataSources() {
         
+    }
+}
+
+extension Resolver {
+    private func injectRepositories() {
+        
+    }
+}
+
+extension Resolver {
+    private func injectUseCases() {
+    }
+}
+
+// MARK: - Injecting ViewModels -
+
+extension Resolver {
+    @MainActor
+    private func injectViewModels() {
     }
 }
