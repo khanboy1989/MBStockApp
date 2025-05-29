@@ -9,6 +9,12 @@ import SwiftUI
 
 @main
 struct MBStockAppApp: App {
+    
+    init () {
+        /// Injecting all dependencies
+        Resolver.shared.injectModules()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
