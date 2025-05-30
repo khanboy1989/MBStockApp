@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// MarketRepository
+/// Holds the market related endpoint calls' blueprints
 protocol MarketRepository {
-    func getMarketSummary() async -> Result<[MarketSummary], AppError> 
+    func getMarketSummary(region: String) async -> Result<[MarketSummary], AppError>
 }

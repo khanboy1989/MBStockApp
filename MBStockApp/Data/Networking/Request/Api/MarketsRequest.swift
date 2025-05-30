@@ -8,19 +8,19 @@
 import Foundation
 
 enum MarketsRequest: RequestProtocol {
-    case summary
+    case summary(region: String)
     
     var path: String {
         switch self {
         case .summary:
-            return "market/" + ApiConstants.apiVersion + "/get-summary"
+            return "/market/" + ApiConstants.apiVersion + "/get-summary"
         }
     }
     
     var urlParams: [String: String?] {
         switch self {
-        case .summary:
-            return [:]
+        case let .summary(region):
+            return ["region": region]
         }
     }
     

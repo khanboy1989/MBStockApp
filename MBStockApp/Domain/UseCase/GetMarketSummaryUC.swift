@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Protocol
 protocol GetMarketSummaryUC {
-    func execute() async -> Result<[MarketSummary], AppError>
+    func execute(_ region: String) async -> Result<[MarketSummary], AppError>
 }
 
 // MARK: - Implementation
@@ -21,7 +21,7 @@ final class DefaultGetMarketSummaryUC: GetMarketSummaryUC {
         self.repository = repository
     }
     
-    func execute() async -> Result<[MarketSummary], AppError> {
-        return await repository.getMarketSummary()
+    func execute(_ region: String) async -> Result<[MarketSummary], AppError> {
+        return await repository.getMarketSummary(region: region)
     }
 }

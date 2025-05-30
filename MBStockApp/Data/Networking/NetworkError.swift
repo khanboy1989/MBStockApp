@@ -8,12 +8,12 @@
 import Foundation
 
 enum NetworkError: LocalizedError {
-    case invalidServerResponse
+    case invalidServerResponse(String)
     case invalidURL
-    var errorDescription: String? {
+    var errorDescription: String {
         switch self {
-        case .invalidServerResponse:
-            return "The server returned an invalid response."
+        case let .invalidServerResponse(message):
+            return message
         case .invalidURL:
             return "URL string is malformed."
         }

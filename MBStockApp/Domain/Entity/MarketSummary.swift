@@ -7,9 +7,11 @@
 
 import Foundation
 
+/// Market Summary model for ViewModel representation
 struct MarketSummary {
+    // MARK: - Variables -
     let fullExchangeName: String
     let symbol: String
 }
 
-// ViewModel -> UseCase (Returns Entity) -> Repository (Returns Entity> -> DataSource (Return Model) -> RequestManager
+

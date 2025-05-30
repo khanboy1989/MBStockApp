@@ -32,7 +32,7 @@ extension RequestProtocol {
     var headers: [String: String] {
         return [
             "x-rapidapi-host": "yh-finance.p.rapidapi.com",
-            "x-rapidapi-key": "6f15681763msh59505b6679bcef7p10be06jsnc8a23a9d3dd"
+            "x-rapidapi-key": "6f15681763msh59505b6679bcef7p10be06jsnc8a23a9d3dd2"
         ]
     }
     
@@ -56,7 +56,8 @@ extension RequestProtocol {
         Logger.networking.debug("🧪 URL Components: \(components)")
         
         guard let url = components.url else {
-            throw  NetworkError.invalidURL
+            Logger.networking.error("URL error: \(String(describing: components.url))")
+            throw NetworkError.invalidURL
         }
 
         var urlRequest = URLRequest(url: url)
@@ -72,7 +73,7 @@ extension RequestProtocol {
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params)
         }
         
-        Logger.networking.info("🚀 [REQUEST] [\(requestType.rawValue)] \(urlRequest, privacy: .private)")
+        Logger.networking.info("🚀 [REQUEST] [\(requestType.rawValue)] \(urlRequest, privacy: .private) [HEADERS] : [\(headers)]")
 
         return urlRequest
     }

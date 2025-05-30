@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MarketDataSource {
-    func fetchMarketSummary() async throws -> MarketSummaryAndSparkResponseModel
+    func fetchMarketSummary(region: String) async throws -> MarketSummaryAndSparkResponseModel
 }
 
 final class DefaultMarketDataSource: MarketDataSource {
@@ -19,8 +19,8 @@ final class DefaultMarketDataSource: MarketDataSource {
         self.requestManager = requestManager
     }
     
-    func fetchMarketSummary() async throws -> MarketSummaryAndSparkResponseModel {
-        let request = MarketsRequest.summary
+    func fetchMarketSummary(region: String) async throws -> MarketSummaryAndSparkResponseModel {
+        let request = MarketsRequest.summary(region: region)
         let response: MarketSummaryAndSparkResponseModel = try await requestManager.makeRequest(with: request)
         return response
     }

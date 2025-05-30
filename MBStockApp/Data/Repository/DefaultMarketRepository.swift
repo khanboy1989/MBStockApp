@@ -14,14 +14,13 @@ final class DefaultMarketRepository: MarketRepository {
         self.marketDataSource = marketDataSource
     }
     
-    func getMarketSummary() async -> Result<[MarketSummary], AppError> {
+    func getMarketSummary(region: String) async -> Result<[MarketSummary], AppError> {
         do {
-            let data = try await marketDataSource.fetchMarketSummary()
+            let data = try await marketDataSource.fetchMarketSummary(region: region)
             let marketSummaries = data.marketSummaryAndSparkResponse.result.map {
                 $0.toDomain()
             }
             return .success(marketSummaries)
-            
         } catch {
             return .failure(error.toAppError)
         }
