@@ -32,4 +32,5 @@ enum ViewState: Equatable {
     case error(String)
     case success
     case empty
+    case refreshing
 }

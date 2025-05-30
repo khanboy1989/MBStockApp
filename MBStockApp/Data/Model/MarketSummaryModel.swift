@@ -34,7 +34,7 @@ struct SparkData: Decodable {
     let end: Int
     let previousClose: Double
     let chartPreviousClose: Double
-    let close: [Double]
+    let close: [Double?]
     let start: Int
     let dataGranularity: Int
 }
