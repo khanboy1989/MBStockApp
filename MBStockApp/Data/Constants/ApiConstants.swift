@@ -8,7 +8,7 @@
 import Foundation
 
 enum ApiConstants {
-    static let baseURL: String = ""
+    static let baseURL: String = "yh-finance.p.rapidapi.com"
     static let refreshRate: Double = 8.0
     static let apiVersion = "v2"
 }

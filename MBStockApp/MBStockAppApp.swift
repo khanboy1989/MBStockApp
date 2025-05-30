@@ -17,7 +17,7 @@ struct MBStockAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MarketView()
         }
     }
 }

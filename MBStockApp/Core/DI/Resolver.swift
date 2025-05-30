@@ -82,7 +82,8 @@ extension Resolver {
     private func injectUseCases() {
         container.register(GetMarketSummaryUC.self) { resolver in
             DefaultGetMarketSummaryUC(repository: resolver.resolve(MarketRepository.self)!)
-        }.inObjectScope(.container)
+        }
+        .inObjectScope(.container)
     }
 }
 
@@ -91,5 +92,8 @@ extension Resolver {
 extension Resolver {
     @MainActor
     private func injectViewModels() {
+        container.register(MarketViewModel.self) { resolver in
+            MarketViewModel(getMarketSummaryUseCase: resolver.resolve(GetMarketSummaryUC.self)!)
+        }
     }
 }

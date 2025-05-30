@@ -22,10 +22,7 @@ extension RequestProtocol {
     }
     
     var params: [String: Any] {
-        return [
-            "x-rapidapi-host" : "yh-finance.p.rapidapi.com",
-            "x-rapidapi-key" : "6f15681763msh59505b6679bcef7p10be06jsnc8a23a9d3dd2"
-        ]
+        return [:]
     }
     
     var urlParams: [String: String?] {
@@ -33,7 +30,10 @@ extension RequestProtocol {
     }
     
     var headers: [String: String] {
-        return [:]
+        return [
+            "x-rapidapi-host": "yh-finance.p.rapidapi.com",
+            "x-rapidapi-key": "6f15681763msh59505b6679bcef7p10be06jsnc8a23a9d3dd"
+        ]
     }
     
     func request() throws -> URLRequest {
@@ -41,7 +41,9 @@ extension RequestProtocol {
         components.scheme = "https"
         components.host = host
         components.path = path
-
+        
+        Logger.networking.info("🚀 [REQUEST - URL] [\(host)] - [\(path)]")
+        
         /// Add default query params
         var queryParamsList: [URLQueryItem] = []
 
@@ -50,8 +52,12 @@ extension RequestProtocol {
         }
 
         components.queryItems = queryParamsList
-
-        guard let url = components.url else { throw  NetworkError.invalidURL }
+        
+        Logger.networking.debug("🧪 URL Components: \(components)")
+        
+        guard let url = components.url else {
+            throw  NetworkError.invalidURL
+        }
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = requestType.rawValue

@@ -17,7 +17,7 @@ enum MarketsRequest: RequestProtocol {
         }
     }
     
-    var urlParams: [String : String?] {
+    var urlParams: [String: String?] {
         switch self {
         case .summary:
             return [:]
