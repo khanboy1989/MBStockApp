@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MarketRepository {
-    func getMarketSummary() -> Result<
+    func getMarketSummary() async -> Result<[MarketSummary], AppError> 
 }

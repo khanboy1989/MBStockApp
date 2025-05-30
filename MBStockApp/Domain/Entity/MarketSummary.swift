@@ -8,7 +8,8 @@
 import Foundation
 
 struct MarketSummary {
-    
+    let fullExchangeName: String
+    let symbol: String
 }
 
 // ViewModel -> UseCase (Returns Entity) -> Repository (Returns Entity> -> DataSource (Return Model) -> RequestManager
