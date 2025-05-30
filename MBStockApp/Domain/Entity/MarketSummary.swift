@@ -8,10 +8,15 @@
 import Foundation
 
 /// Market Summary model for ViewModel representation
-struct MarketSummary {
-    // MARK: - Variables -
-    let fullExchangeName: String
-    let symbol: String
+struct MarketSummary: Identifiable {
+    let id: String            // symbol
+    let name: String          // fullExchangeName
+    let price: Double         // regularMarketPrice.raw
+    let previousClose: Double // spark.previousClose
+
+    /// Computes the % change between current price and previous close
+    var changePercent: Double {
+        guard previousClose != 0 else { return 0 }
+        return ((price - previousClose) / previousClose) * 100
+    }
 }
-
-

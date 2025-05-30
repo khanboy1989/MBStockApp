@@ -59,4 +59,3 @@ where VM: ViewModel, SuccessView: View, NoItemsView: View, ErrorView: View,
         }
     }
 }
-

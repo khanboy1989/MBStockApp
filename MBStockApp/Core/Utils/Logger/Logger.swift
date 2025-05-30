@@ -11,4 +11,5 @@ import OSLog
 extension Logger {
     private static let subsystem = Bundle.main.bundleIdentifier ?? "MBStockApp"
     static let networking = Logger(subsystem: subsystem, category: "networking")
+    static let parserError = Logger(subsystem: subsystem, category: "parsing")
 }
