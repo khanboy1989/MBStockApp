@@ -10,14 +10,12 @@ import SwiftUI
 // MARK: - Main View
 struct MarketView: View {
     @StateObject private var viewModel = Resolver.shared.resolve(MarketViewModel.self)
-    @State private var searchText: String = ""
     var body: some View {
         NavigationView {
             ZStack {
                 Color.black.ignoresSafeArea()
                 BaseStateView(viewModel: viewModel) {
                     content
-                        
                 } loadingView: {
                     ProgressView()
                         .progressViewStyle(.circular)
@@ -29,7 +27,8 @@ struct MarketView: View {
                         .scaleEffect(1.0)
                         .tint(.white)
                 }
-            }.searchable(text: $searchText)
+            }
+            .searchable(text: $viewModel.searchText)
             .navigationTitle("stockMarket".localized())
         }
         .task {
@@ -41,9 +40,9 @@ struct MarketView: View {
     }
     
     var content: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 12) {
-                ForEach(viewModel.summaries, id: \.id) { item in
+                ForEach(viewModel.filteredSummaries, id: \.id) { item in
                     MarketRowView(item: item)
                         .padding(.horizontal)
                 }

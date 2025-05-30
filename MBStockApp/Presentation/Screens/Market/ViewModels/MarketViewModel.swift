@@ -5,49 +5,56 @@
 //  Created by Serhan Khan on 30/05/2025.
 //
 
-// MARK: - ViewModel -
+//
+//  MarketViewModel.swift
+//  MBStockApp
+//
+//  Created by Serhan Khan on 30/05/2025.
+//
+
 import Foundation
 import Combine
 
 @MainActor
 final class MarketViewModel: ViewModel {
     
-    // MARK: - Dependecies -
+    // MARK: - Dependencies -
     private let getMarketSummaryUseCase: any GetMarketSummaryUC
     private let region: String = "US"
-    private var cancellables = Set<AnyCancellable>()
-    
+
+    // MARK: - Published Properties -
     @Published var summaries: [MarketSummary] = []
-    
+    @Published var filteredSummaries: [MarketSummary] = []
+    @Published var searchText: String = ""
+    @Published var isRefreshing: Bool = false
+
+    // MARK: - Internal State -
+    private var cancellables = Set<AnyCancellable>()
+
     // MARK: - Init -
     init(getMarketSummaryUseCase: any GetMarketSummaryUC) {
         self.getMarketSummaryUseCase = getMarketSummaryUseCase
         super.init()
-        self.startAutoRefresh()
+        addSubscribers()
+        startAutoRefresh()
     }
-}
 
-// MARK: - Extensions -
-extension MarketViewModel {
-    
-    // MARK: - Refresh Loop
-    private func startAutoRefresh() {
-        Timer
-            .publish(every: ApiConstants.refreshRate, on: .main, in: .common)
-            .autoconnect()
-            .sink { [weak self] _ in
-                Task {
-                    await self?.fetchMarketSummary(isRefreshing: true)
-                }
+    // MARK: - Search Filtering -
+    private func addSubscribers() {
+        $searchText
+            .removeDuplicates()
+            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
+            .sink { [weak self] text in
+                self?.filterSummaries(by: text)
             }
             .store(in: &cancellables)
     }
+}
+
+extension MarketViewModel {
     
-    func stopAutoRefresh() {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
-    }
-    
+    // MARK: - Network Calls-
+    // MARK: - Fetch Market Summary -
     func fetchMarketSummary(isRefreshing: Bool) async {
         self.state = isRefreshing ? .refreshing : .loading
         let result = await getMarketSummaryUseCase.execute(region)
@@ -55,8 +62,43 @@ extension MarketViewModel {
         case let .success(summaries):
             self.state = .success
             self.summaries = summaries
+            self.filterSummaries(by: self.searchText) // re-filter with current text
         case let .failure(error):
             self.state = .error(extractNetworkErrorMessage(from: error))
+        }
+    }
+    
+    // MARK: - Timer for refresher -
+    // MARK: - Auto Refresh Every 8 Seconds -
+    func startAutoRefresh() {
+        Timer.publish(every: 8, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                Task { await self?.fetchMarketSummary(isRefreshing: true) }
+            }
+            .store(in: &cancellables)
+    }
+
+    // MARK: - Stops the cancellables for each added timer
+    // When View Dissapears
+    func stopAutoRefresh() {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+    }
+}
+
+extension MarketViewModel {
+    
+    // MARK: - Applying Filtering with searchText
+    private func filterSummaries(by text: String) {
+        guard !text.isEmpty else {
+            filteredSummaries = summaries
+            return
+        }
+
+        filteredSummaries = summaries.filter {
+            $0.name.localizedCaseInsensitiveContains(text) ||
+            $0.id.localizedCaseInsensitiveContains(text)
         }
     }
 }
