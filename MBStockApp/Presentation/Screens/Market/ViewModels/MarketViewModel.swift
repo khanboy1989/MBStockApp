@@ -97,8 +97,7 @@ extension MarketViewModel {
         }
 
         filteredSummaries = summaries.filter {
-            $0.name.localizedCaseInsensitiveContains(text) ||
-            $0.id.localizedCaseInsensitiveContains(text)
+            $0.name.localizedCaseInsensitiveContains(text) 
         }
     }
 }

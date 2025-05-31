@@ -27,6 +27,7 @@ class Resolver {
         injectRepositories()
         injectUseCases()
         injectViewModels()
+        injectRouter()
     }
     
     /// This method is responsible for resolving a dependency
@@ -47,7 +48,8 @@ extension Resolver {
         //NetworkManager: Registers a singleton instance of DefaultNetworkManager.
         container.register(NetworkManager.self) { _ in
             DefaultNetworkManager()
-        }.inObjectScope(.container)
+        }
+        .inObjectScope(.container)
         
         // RequestManager: Depends on NetworkManager, so it resolves that first.
         container.register(RequestManager.self) { resolver in
@@ -88,12 +90,21 @@ extension Resolver {
 }
 
 // MARK: - Injecting ViewModels -
-
 extension Resolver {
     @MainActor
     private func injectViewModels() {
         container.register(MarketViewModel.self) { resolver in
             MarketViewModel(getMarketSummaryUseCase: resolver.resolve(GetMarketSummaryUC.self)!)
         }
+    }
+}
+
+extension Resolver {
+    /// Router for navigation of the application 
+    private func injectRouter() {
+        container.register(Router.self) { resolver in
+            Router()
+        }
+        .inObjectScope(.container)
     }
 }

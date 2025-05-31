@@ -10,14 +10,14 @@ import Foundation
 enum StocksRequest: RequestProtocol {
     case summary(symbol: String, region: String)
     
-    var path: String{
+    var path: String {
         switch self {
         case .summary:
             return "stock/" + ApiConstants.apiVersion + "/get-summary"
         }
     }
     
-    var urlParams: [String : String?] {
+    var urlParams: [String: String?] {
         switch self {
         case let .summary(symbol, region):
             return ["symbol": symbol, "region": region]

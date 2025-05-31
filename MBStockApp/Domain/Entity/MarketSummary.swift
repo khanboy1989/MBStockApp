@@ -8,7 +8,8 @@
 import Foundation
 
 /// Market Summary model for ViewModel representation
-struct MarketSummary: Identifiable {
+/// It is one more layer in order to transfer necessary data from Network Call to View
+struct MarketSummary: Identifiable, Equatable, Hashable {
     let id: String            // symbol
     let name: String          // fullExchangeName
     let price: Double         // regularMarketPrice.raw

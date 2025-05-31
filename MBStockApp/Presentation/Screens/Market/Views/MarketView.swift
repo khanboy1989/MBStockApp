@@ -10,8 +10,10 @@ import SwiftUI
 // MARK: - Main View
 struct MarketView: View {
     @StateObject private var viewModel = Resolver.shared.resolve(MarketViewModel.self)
+    @StateObject private var router = Resolver.shared.resolve(Router.self)
+    
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $router.navPath) {
             ZStack {
                 Color.black.ignoresSafeArea()
                 BaseStateView(viewModel: viewModel) {
@@ -30,6 +32,12 @@ struct MarketView: View {
             }
             .searchable(text: $viewModel.searchText)
             .navigationTitle("stockMarket".localized())
+            .navigationDestination(for: MarketViewDestination.self) { destination in
+                switch destination {
+                case .stockDetail(let item):
+                    MarketDetailView(item: item)
+                }
+            }
         }
         .task {
             await viewModel.fetchMarketSummary(isRefreshing: false)
@@ -40,15 +48,33 @@ struct MarketView: View {
     }
     
     var content: some View {
-        ScrollView(showsIndicators: false) {
-            LazyVStack(spacing: 12) {
-                ForEach(viewModel.filteredSummaries, id: \.id) { item in
-                    MarketRowView(item: item)
-                        .padding(.horizontal)
-                }
+        MarketListView(
+            items: viewModel.filteredSummaries,
+            itemView: { item in
+                MarketRowView(item: item)
+            },
+            onItemTap: { item in
+                router.navigate(to: MarketViewDestination.stockDetail(item))
             }
-            .padding(.top)
-        }
+        )
         .background(Color.black)
+    }
+}
+
+struct MarketDetailView: View {
+    let item: MarketSummary
+    var body: some View {
+        VStack(spacing: 16) {
+            Text(item.name)
+                .font(.largeTitle)
+                .foregroundColor(.white)
+            Text("Symbol: \(item.id)")
+                .foregroundColor(.gray)
+            Text(String(format: "Price: %.2f", item.price))
+            Text(String(format: "Change: %.2f%%", item.changePercent))
+                .foregroundColor(item.changePercent >= 0 ? .green : .red)
+        }
+        .padding()
+        .background(Color.black.ignoresSafeArea())
     }
 }
