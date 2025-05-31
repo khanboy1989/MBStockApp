@@ -86,6 +86,11 @@ extension Resolver {
             DefaultGetMarketSummaryUC(repository: resolver.resolve(MarketRepository.self)!)
         }
         .inObjectScope(.container)
+        
+        container.register(GetMarketQuoteUC.self) { resolver in
+            DefaultGetMarketQuoteUC(repository: resolver.resolve(MarketRepository.self)!)
+        }
+        .inObjectScope(.container)
     }
 }
 
@@ -93,8 +98,12 @@ extension Resolver {
 extension Resolver {
     @MainActor
     private func injectViewModels() {
-        container.register(MarketViewModel.self) { resolver in
-            MarketViewModel(getMarketSummaryUseCase: resolver.resolve(GetMarketSummaryUC.self)!)
+        container.register(MarketSummaryViewModel.self) { resolver in
+            MarketSummaryViewModel(getMarketSummaryUseCase: resolver.resolve(GetMarketSummaryUC.self)!)
+        }
+        
+        container.register(MarketQuoteDetailViewModel.self) { resolver in
+            MarketQuoteDetailViewModel(getMarketQuoteUC: resolver.resolve(GetMarketQuoteUC.self)!)
         }
     }
 }

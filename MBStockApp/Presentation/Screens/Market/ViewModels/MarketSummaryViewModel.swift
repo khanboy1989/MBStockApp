@@ -16,11 +16,11 @@ import Foundation
 import Combine
 
 @MainActor
-final class MarketViewModel: ViewModel {
+final class MarketSummaryViewModel: ViewModel {
     
     // MARK: - Dependencies -
     private let getMarketSummaryUseCase: any GetMarketSummaryUC
-    private let region: String = "US"
+    let region: String = "US"
 
     // MARK: - Published Properties -
     @Published var summaries: [MarketSummary] = []
@@ -51,7 +51,7 @@ final class MarketViewModel: ViewModel {
     }
 }
 
-extension MarketViewModel {
+extension MarketSummaryViewModel {
     
     // MARK: - Network Calls-
     // MARK: - Fetch Market Summary -
@@ -87,7 +87,7 @@ extension MarketViewModel {
     }
 }
 
-extension MarketViewModel {
+extension MarketSummaryViewModel {
     
     // MARK: - Applying Filtering with searchText
     private func filterSummaries(by text: String) {

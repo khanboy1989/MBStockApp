@@ -9,3 +9,11 @@
 "noDataFound" = "No Data Found";
 "invalidUrl" = "Invalid URL";
 "stockMarket" = "Stock Market";
+"fiftyTwoWeekRange" = "52-Week Range";
+"volume" = "Volume";
+"marketCap" = "Market Cap";
+"peRation" = "PE Ration";
+"eps" = "EPS";
+"open" = "Open";
+"high" = "High";
+"low" = "Low";

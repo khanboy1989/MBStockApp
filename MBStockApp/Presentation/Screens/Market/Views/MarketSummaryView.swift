@@ -8,8 +8,8 @@
 import SwiftUI
 
 // MARK: - Main View
-struct MarketView: View {
-    @StateObject private var viewModel = Resolver.shared.resolve(MarketViewModel.self)
+struct MarketSummaryView: View {
+    @StateObject private var viewModel = Resolver.shared.resolve(MarketSummaryViewModel.self)
     @StateObject private var router = Resolver.shared.resolve(Router.self)
     
     var body: some View {
@@ -32,10 +32,10 @@ struct MarketView: View {
             }
             .searchable(text: $viewModel.searchText)
             .navigationTitle("stockMarket".localized())
-            .navigationDestination(for: MarketViewDestination.self) { destination in
+            .navigationDestination(for: MarketSummaryViewDestination.self) { destination in
                 switch destination {
-                case .stockDetail(let item):
-                    MarketDetailView(item: item)
+                case .marketQuoteDetail(let item):
+                    MarketQuoteDetailView(region: viewModel.region, symbol: item.id)
                 }
             }
         }
@@ -54,27 +54,9 @@ struct MarketView: View {
                 MarketRowView(item: item)
             },
             onItemTap: { item in
-                router.navigate(to: MarketViewDestination.stockDetail(item))
+                router.navigate(to: MarketSummaryViewDestination.marketQuoteDetail(item))
             }
         )
         .background(Color.black)
-    }
-}
-
-struct MarketDetailView: View {
-    let item: MarketSummary
-    var body: some View {
-        VStack(spacing: 16) {
-            Text(item.name)
-                .font(.largeTitle)
-                .foregroundColor(.white)
-            Text("Symbol: \(item.id)")
-                .foregroundColor(.gray)
-            Text(String(format: "Price: %.2f", item.price))
-            Text(String(format: "Change: %.2f%%", item.changePercent))
-                .foregroundColor(item.changePercent >= 0 ? .green : .red)
-        }
-        .padding()
-        .background(Color.black.ignoresSafeArea())
     }
 }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum MarketViewDestination: Hashable {
-    case stockDetail(MarketSummary)
+enum MarketSummaryViewDestination: Hashable {
+    case marketQuoteDetail(MarketSummary)
 }

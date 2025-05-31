@@ -11,4 +11,6 @@ import Foundation
 /// Holds the market related endpoint calls' blueprints
 protocol MarketRepository {
     func getMarketSummary(region: String) async -> Result<[MarketSummary], AppError>
+    
+    func getMarketQuote(region: String, symbol: String) async -> Result<MarketQuote, AppError>
 }

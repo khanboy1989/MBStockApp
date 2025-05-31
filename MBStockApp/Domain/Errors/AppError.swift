@@ -11,5 +11,5 @@ enum AppError: Error, Equatable {
     case parsingError(String)
     case serverError(String)
     case unknownError(String)
-    case localDataFetchError(String)
+    case emptyDataError(String)
 }

@@ -17,6 +17,8 @@ class ViewModel: ObservableObject {
             switch error {
             case let .networkError(message):
                 return message
+            case let .emptyDataError(message):
+                return message
             default:
                 return error.localizedDescription
             }
