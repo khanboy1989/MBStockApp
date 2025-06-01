@@ -9,15 +9,17 @@ import SwiftUI
 
 @main
 struct MBStockAppApp: App {
-    
+    @StateObject private var router: Router
     init () {
         /// Injecting all dependencies
         Resolver.shared.injectModules()
+        self._router = .init(wrappedValue: Resolver.shared.resolve(Router.self))
     }
     
     var body: some Scene {
         WindowGroup {
             MarketSummaryView()
+                .environmentObject(router)
         }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: - Main View
 struct MarketSummaryView: View {
     @StateObject private var viewModel = Resolver.shared.resolve(MarketSummaryViewModel.self)
-    @StateObject private var router = Resolver.shared.resolve(Router.self)
+    @EnvironmentObject private var router: Router
     
     var body: some View {
         NavigationStack(path: $router.navPath) {

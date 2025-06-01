@@ -9,7 +9,6 @@ import Foundation
 
 protocol MarketDataSource {
     func fetchMarketSummary(region: String) async throws -> MarketSummaryAndSparkResponseModel
-    
     func fetchMarketQuotes(region: String, symbol: String) async throws -> MarketQuoteResponseModel
 }
 

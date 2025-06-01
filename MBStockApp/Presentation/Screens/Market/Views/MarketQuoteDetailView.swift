@@ -13,6 +13,7 @@ struct MarketQuoteDetailView: View {
     private let region: String
     private let symbol: String
     
+    // MARK: - Init -
     init(region: String, symbol: String) {
         self.region = region
         self.symbol = symbol
@@ -35,7 +36,8 @@ struct MarketQuoteDetailView: View {
                         .padding()
                     }
                 }
-            } loadingView: {
+            }
+            loadingView: {
                 ProgressView()
                     .progressViewStyle(.circular)
                     .scaleEffect(1.5)
@@ -47,26 +49,26 @@ struct MarketQuoteDetailView: View {
         }
     }
     
-    // MARK: - Header
+    // MARK: - Header -
     private func header(_ quote: MarketQuote) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text("\(quote.shortName) (\(quote.symbol))")
                 .font(.title2.bold())
                 .foregroundColor(.white)
-
+            
             HStack(spacing: 8) {
                 Text("\(quote.currency ?? "") \(quote.price.formatted(.number.precision(.fractionLength(2))))")
                     .font(.largeTitle.bold())
                     .foregroundColor(.white)
-
+                
                 Text("(\(quote.changePercent, specifier: "%.2f")%)")
                     .foregroundColor(quote.changePercent >= 0 ? .green : .red)
                     .font(.headline)
             }
         }
     }
-
-    // MARK: - Metrics
+    
+    // MARK: - Metrics -
     private func metrics(_ quote: MarketQuote) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             metricRow("marketCap".localized(), quote.marketCap?.abbreviatedString() ?? "-")
@@ -78,19 +80,19 @@ struct MarketQuoteDetailView: View {
             metricRow("low".localized(), quote.dayLow?.formatted() ?? "-")
         }
     }
-
-    // MARK: - 52 Week Range
+    
+    // MARK: - 52 Week Range -
     private func priceRange(_ quote: MarketQuote) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("fiftyTwoWeekRange".localized())
                 .font(.headline)
                 .foregroundColor(.white)
-
+            
             let low = quote.fiftyTwoWeekLow ?? 0
             let high = quote.fiftyTwoWeekHigh ?? 1
             let current = quote.price
             let progress = CGFloat((current - low) / (high - low))
-
+            
             VStack(alignment: .leading) {
                 HStack {
                     Text(low.formatted())
@@ -98,7 +100,7 @@ struct MarketQuoteDetailView: View {
                     Text(high.formatted())
                 }
                 .foregroundColor(.gray)
-
+                
                 GeometryReader { geo in
                     ZStack(alignment: .leading) {
                         Capsule().fill(Color.gray.opacity(0.3)).frame(height: 8)
@@ -109,8 +111,12 @@ struct MarketQuoteDetailView: View {
             }
         }
     }
+}
 
-    // MARK: - Helper
+
+// MARK: - Extensions -
+extension MarketQuoteDetailView {
+    // MARK: - Helper -
     private func metricRow(_ title: String, _ value: String) -> some View {
         HStack {
             Text(title)

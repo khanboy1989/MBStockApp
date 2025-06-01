@@ -21,9 +21,9 @@ final class DefaultMarketRepository: MarketRepository {
             let marketSummaries = data.marketSummaryAndSparkResponse.result.map {
                 $0.toDomain()
             }
-            return .success(marketSummaries)
+            return .success(marketSummaries) // return success response 
         } catch {
-            return .failure(error.toAppError)
+            return .failure(error.toAppError) // map network error to AppError for UI
         }
     }
     
@@ -31,11 +31,11 @@ final class DefaultMarketRepository: MarketRepository {
         do {
             let data = try await marketDataSource.fetchMarketQuotes(region: region, symbol: symbol)
             guard let marketQuote = data.quoteResponse.result.first(where: {$0.symbol == symbol })?.toDomain() else {
-                return .failure(.emptyDataError("noDataFound".localized()))
+                return .failure(.emptyDataError("noDataFound".localized())) // Return failure when data not found for given symbol and region
             }
-            return .success(marketQuote)
+            return .success(marketQuote) // otherwise return success
         } catch {
-            return .failure(error.toAppError)
+            return .failure(error.toAppError) // map network error to AppError for UI
         }
     }
 }
