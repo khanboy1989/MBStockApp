@@ -58,5 +58,6 @@ struct MarketSummaryView: View {
             }
         )
         .background(Color.black)
+        .padding(.horizontal, 16)
     }
 }

@@ -39,5 +39,6 @@ struct MarketListView<Items, ItemView>: View where Items: Identifiable, Items: E
         }//: List
         .listStyle(PlainListStyle())
         .scrollIndicators(.hidden)
+        .background(.black)
     }
 }

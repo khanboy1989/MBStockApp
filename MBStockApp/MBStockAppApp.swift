@@ -16,6 +16,10 @@ struct MBStockAppApp: App {
         
         /// Initialising the router env variable for app life cycle
         self._router = .init(wrappedValue: Resolver.shared.resolve(Router.self))
+        
+        /// Set appearance to dark
+        UIView.appearance().overrideUserInterfaceStyle = .dark
+
     }
     
     var body: some Scene {
