@@ -5,7 +5,9 @@
 //  Created by Serhan Khan on 31/05/2025.
 //
 
-struct MarketQuote {
+import Foundation
+
+struct MarketQuote: Equatable {
     let symbol: String                  // e.g., "AAPL" – Ticker symbol to identify the company
     let shortName: String              // e.g., "Apple Inc." – For display in the UI
     let price: Double                  // Current stock price

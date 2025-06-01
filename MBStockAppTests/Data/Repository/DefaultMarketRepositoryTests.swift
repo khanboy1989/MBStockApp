@@ -10,10 +10,9 @@ import XCTest
 
 final class DefaultMarketRepositoryTests: XCTestCase {
     // MARK: - Properties -
-    
     var sut: DefaultMarketRepository!
     var dataSourceMock: MarketDataSourceMock!
-   
+    
     // MARK: - setupWithError
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -30,7 +29,14 @@ final class DefaultMarketRepositoryTests: XCTestCase {
     
     // MARK: - Tests
     func testFetchingMarketSummarySuccess() async {
-       let result = await sut.getMarketSummary(region: "US")
+        
+        //Given
+        let region = "US"
+        
+        // When
+        let result = await sut.getMarketSummary(region: region)
+        
+        // Then
         switch result {
         case let .success(marketSummary):
             XCTAssertEqual(marketSummary.first?.id, "AAPL")
@@ -40,7 +46,14 @@ final class DefaultMarketRepositoryTests: XCTestCase {
     }
     
     func testFetchingMarketQuoteSuccess() async {
-        let result = await sut.getMarketQuote(region: "US", symbol: "AAPL")
+        // Given
+        let region = "US"
+        let symbol = "AAPL"
+        
+        // Then
+        let result = await sut.getMarketQuote(region: region, symbol: symbol)
+        
+        // Then
         switch result {
         case let .success(marketQuote):
             XCTAssertEqual(marketQuote.volume, 62000000)

@@ -13,6 +13,8 @@ struct MBStockAppApp: App {
     init () {
         /// Injecting all dependencies
         Resolver.shared.injectModules()
+        
+        /// Initialising the router env variable for app life cycle
         self._router = .init(wrappedValue: Resolver.shared.resolve(Router.self))
     }
     

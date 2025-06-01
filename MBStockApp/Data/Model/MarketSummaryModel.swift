@@ -31,11 +31,11 @@ struct TimeData: Decodable {
 struct SparkData: Decodable {
     let timestamp: [Int]
     let symbol: String
-    let end: Int
+    let end: Int?
     let previousClose: Double
     let chartPreviousClose: Double
-    let close: [Double?]
-    let start: Int
+    let close: [Double?]?
+    let start: Int?
     let dataGranularity: Int
 }
 

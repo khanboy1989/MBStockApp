@@ -28,8 +28,7 @@ final class MarketSummaryViewModel: ViewModel {
     @Published var searchText: String = ""
     @Published var isRefreshing: Bool = false
 
-    // MARK: - Internal State -
-    private var cancellables = Set<AnyCancellable>()
+    var cancellables = Set<AnyCancellable>()
 
     // MARK: - Init -
     init(getMarketSummaryUseCase: any GetMarketSummaryUC) {

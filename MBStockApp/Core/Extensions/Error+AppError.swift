@@ -8,7 +8,7 @@
 import Foundation
 
 extension Error {
-    /// Converts any error to an `AppError` object.
+    /// Converts any `NetworkError`  to an `AppError` object.
     var toAppError: AppError {
         if let error = self as? NetworkError {
             switch error {
