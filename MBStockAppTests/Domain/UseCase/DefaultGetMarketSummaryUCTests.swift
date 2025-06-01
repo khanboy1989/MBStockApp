@@ -56,7 +56,7 @@ final class DefaultGetMarketSummaryUCTests: XCTestCase {
         
         // Then
         switch result {
-        case let .success(marketSummary):
+        case .success:
             XCTFail("Unexpected success case")
         case let .failure(error):
             switch error {

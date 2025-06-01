@@ -113,7 +113,6 @@ struct MarketQuoteDetailView: View {
     }
 }
 
-
 // MARK: - Extensions -
 extension MarketQuoteDetailView {
     // MARK: - Helper -
