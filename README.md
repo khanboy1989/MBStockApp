@@ -1,7 +1,5 @@
 # 📈 MBStockApp
 
-![iOS CI](https://github.com/khanboy1989/MBStockApp/actions/workflows/ios-ci.yml/badge.svg)
-
 MBStockApp is a modern iOS application that provides real-time stock market summaries and quote details. Built using **SwiftUI**, **Combine**, and **Clean Architecture**, it focuses on modularity, testability, and a smooth user experience.
 
 ---
@@ -169,11 +167,12 @@ Use the following shortcut:
 xcodebuild test -scheme MBStockApp -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.4'
 ```
 
-📇 Author
-	•	👨‍💻 Name: Serhan Khan
-	•	🌐 Website / Portfolio: [Add if available]
-	•	📧 Email: serhankhan0@gmail.com
-	•	🔗 LinkedIn: linkedin.com/in/serhan-khan-97b577103
-	•	🐙 GitHub: github.com/khanboy1989
-	•	✍️ Medium: medium.com/@serhankhan
-	•	🎥 YouTube: youtube.com/@SwiftwithSerhan-d7x
+## 📇 Author
+
+- 👨‍💻 **Name:** Serhan Khan  
+- 🌐 **Website / Portfolio:** *[Add if available]*  
+- 📧 **Email:** [serhankhan0@gmail.com](mailto:serhankhan0@gmail.com)  
+- 🔗 **LinkedIn:** [linkedin.com/in/serhan-khan-97b577103](https://www.linkedin.com/in/serhan-khan-97b577103)  
+- 🐙 **GitHub:** [github.com/khanboy1989](https://github.com/khanboy1989)  
+- ✍️ **Medium:** [medium.com/@serhankhan](https://medium.com/@serhankhan)  
+- 🎥 **YouTube:** [youtube.com/@SwiftwithSerhan-d7x](https://www.youtube.com/@SwiftwithSerhan-d7x)
