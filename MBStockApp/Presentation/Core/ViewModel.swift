@@ -6,6 +6,17 @@
 //
 import Foundation
 
+// MARK: - ViewState -
+/// Enum for ViewState to track state of View
+enum ViewState: Equatable {
+    case initial
+    case loading
+    case error(String)
+    case success
+    case empty
+    case refreshing
+}
+
 @MainActor
 class ViewModel: ObservableObject {
     @Published var state: ViewState = .initial
@@ -26,13 +37,4 @@ class ViewModel: ObservableObject {
             return error.localizedDescription
         }
     }
-}
-
-enum ViewState: Equatable {
-    case initial
-    case loading
-    case error(String)
-    case success
-    case empty
-    case refreshing
 }

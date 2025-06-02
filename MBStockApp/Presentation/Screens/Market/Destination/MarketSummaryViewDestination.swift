@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - MarketSummaryViewDestination -
+/// For NavigationPath 
 enum MarketSummaryViewDestination: Hashable {
     case marketQuoteDetail(MarketSummary)
 }
