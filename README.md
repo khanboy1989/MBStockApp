@@ -23,17 +23,20 @@ MBStockApp is built using **Clean Architecture** principles. Each layer has a de
 
 ### 🔁 Layered Flow Overview
 
-View (SwiftUI)
-↓
-ViewModel (State, Binding)
-↓
-UseCase (Scenario-Specific Logic)
-↓
-Repository (Bridge, Transformation)
-↓
-DataSource (Concrete Data Access)
-
-
+- **View (SwiftUI)**  
+  Displays the UI and binds to state via `ViewModel`.
+  ↓
+- **ViewModel (State, Binding)**  
+  Contains logic for managing view state, search, and timers.
+  ↓
+- **UseCase (Scenario-Specific Logic)**  
+  Executes a specific action like fetching market data.
+  ↓
+- **Repository (Bridge, Transformation)**  
+  Maps and transforms data from the source for the use case.
+  ↓
+- **DataSource (Concrete Data Access)**  
+  Provides raw data (e.g., from an API or local cache).
 ---
 
 ### 1. **View Layer (UI)**
@@ -108,16 +111,15 @@ DataSource (Concrete Data Access)
 
 ## 📁 Project Structure
 
-
-MBStockApp
-├── Views/                  # SwiftUI views
-├── ViewModels/             # State & logic layer
-├── UseCases/               # Scenario-specific business logic
-├── Repository/             # Domain mappers and data orchestration
-├── DataSource/             # Network (or mock) data providers
-├── Models/                 # Domain and DTO models
-├── Resources/              # Localization and assets
-├── Tests/                  # Unit & UI tests
+MBStockApp/
+├── Views/          → SwiftUI views and navigation components
+├── ViewModels/     → State management, business flow, Combine publishers
+├── UseCases/       → Scenario-specific business logic abstractions
+├── Repository/     → Bridges between data sources and use cases (mapping, orchestration)
+├── DataSource/     → Low-level raw data providers (mocked or remote)
+├── Models/         → DTOs and domain models (parsed and mapped)
+├── Resources/      → Localized strings, assets, constants
+├── Tests/          → Unit tests and test mocks
 
 ---
 
