@@ -15,14 +15,28 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures full Git history for versioning and SPM integrity
 
       - name: Set up Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: latest
+          xcode-version: 15.2
 
-      - name: Build & Test with xcodebuild
+      - name: Clean Derived Data
+        run: |
+          rm -rf ~/Library/Developer/Xcode/DerivedData
+
+      - name: Resolve Swift Package Dependencies
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project MBStockApp.xcodeproj
+
+      - name: Build & Run Unit Tests
         run: |
           xcodebuild test \
+            -project MBStockApp.xcodeproj \
             -scheme MBStockApp \
-            -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.4'
+            -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.4' \
+            -enableCodeCoverage YES \
+            -allowProvisioningUpdates
