@@ -16,9 +16,12 @@ jobs:
     # Checkout the repository
     - name: Checkout repository
       uses: actions/checkout@v4
+      
+    - name: Select Xcode 15.2
+      run: sudo xcode-select -s /Applications/Xcode_15.2.app
 
-    # Run tests on iPhone 15 Simulator with iOS 17.6
-    - name: Run Tests on iPhone 15 Simulator (iOS 17.6)
+    # Run tests on iPhone 15 Simulator with iOS 16.0
+    - name: Run Tests on iPhone 14 Simulator (iOS 16.0)
       run: |
         xcodebuild test \
           -scheme 'Requestify' \
