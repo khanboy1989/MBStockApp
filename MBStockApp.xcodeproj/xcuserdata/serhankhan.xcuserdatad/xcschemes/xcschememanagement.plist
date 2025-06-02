@@ -9,6 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Sample-iOS (Playground).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>EB6F3AC82DE6DD5F002A1395</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB6F3AD52DE6DD62002A1395</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB6F3ADF2DE6DD62002A1395</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

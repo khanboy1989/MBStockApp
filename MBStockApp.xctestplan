@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "4D1EBF10-392D-431F-A399-4EBDF56667D6",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MBStockApp.xcodeproj",
+      "identifier" : "EB6F3AC82DE6DD5F002A1395",
+      "name" : "MBStockApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MBStockApp.xcodeproj",
+        "identifier" : "EB6F3AD52DE6DD62002A1395",
+        "name" : "MBStockAppTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MBStockApp.xcodeproj",
+        "identifier" : "EB6F3ADF2DE6DD62002A1395",
+        "name" : "MBStockAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

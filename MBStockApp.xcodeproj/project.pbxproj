@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5416C2902DECCFFE0067E62D /* MBStockAppTestPlan.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 5416C28F2DECCFFE0067E62D /* MBStockAppTestPlan.xctestplan */; };
 		EBF5F02F2DE6EA5A00AC38A8 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = EBF5F02E2DE6EA5A00AC38A8 /* Swinject */; };
 		EBF5F03A2DE7014A00AC38A8 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EBF5F0392DE7014A00AC38A8 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
@@ -43,7 +42,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5416C28F2DECCFFE0067E62D /* MBStockAppTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MBStockAppTestPlan.xctestplan; sourceTree = "<group>"; };
+		5416C4562DEE30F60067E62D /* MBStockApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MBStockApp.xctestplan; sourceTree = "<group>"; };
 		EB6F3AC92DE6DD5F002A1395 /* MBStockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBStockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F3AD62DE6DD62002A1395 /* MBStockAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBStockAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6F3AE02DE6DD62002A1395 /* MBStockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBStockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,7 +96,7 @@
 		EB6F3AC02DE6DD5F002A1395 = {
 			isa = PBXGroup;
 			children = (
-				5416C28F2DECCFFE0067E62D /* MBStockAppTestPlan.xctestplan */,
+				5416C4562DEE30F60067E62D /* MBStockApp.xctestplan */,
 				EBF5F0392DE7014A00AC38A8 /* .swiftlint.yml */,
 				EB6F3B032DE6E225002A1395 /* MBStockApp */,
 				EB6F3AD92DE6DD62002A1395 /* MBStockAppTests */,
@@ -242,7 +241,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5416C2902DECCFFE0067E62D /* MBStockAppTestPlan.xctestplan in Resources */,
 				EBF5F03A2DE7014A00AC38A8 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
