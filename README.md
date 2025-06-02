@@ -105,12 +105,13 @@ MBStockApp is built using **Clean Architecture** principles. Each layer has a de
 - Combine
 - XCTest (unit testing)
 - SwiftLint
-- Custom Resolver for Dependency Injection
+- Swinject for Dependency Injection
 
 ---
 
 ## 📁 Project Structure
 
+```text
 MBStockApp/
 ├── Views/          → SwiftUI views and navigation components
 ├── ViewModels/     → State management, business flow, Combine publishers
