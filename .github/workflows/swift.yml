@@ -22,6 +22,6 @@ jobs:
         run: |
           xcodebuild clean build test \
             -project MBStockApp.xcodeproj \
-            -scheme "Debug" \
+            -scheme "MBStockApp" \
             -destination 'platform=iOS Simulator,name=iPhone 14' \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
