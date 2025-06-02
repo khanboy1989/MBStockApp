@@ -1,7 +1,5 @@
 # 📈 MBStockApp
 
-![iOS CI](https://github.com/khanboy1989/MBStockApp/actions/workflows/ios-ci.yml/badge.svg)
-
 MBStockApp is a modern iOS application that provides real-time stock market summaries and quote details. Built using **SwiftUI**, **Combine**, and **Clean Architecture**, it focuses on modularity, testability, and a smooth user experience.
 
 ---
