@@ -7,12 +7,16 @@
 
 import SwiftUI
 
+/// Generic MarketListView We pass the Item and ItemView it would be represented
+/// on the parent
 struct MarketListView<Items, ItemView>: View where Items: Identifiable, Items: Equatable, ItemView: View {
     
+    // MARK: - Properties -
     let items: [Items]
     let itemView: (Items) -> ItemView
     let onItemTap: ((Items) -> Void)?
     
+    // MARK: - Init -
     init(items: [Items],
          @ViewBuilder itemView: @escaping (Items) -> ItemView,
          onItemTap: ((Items) -> Void)? = nil) {
@@ -21,6 +25,7 @@ struct MarketListView<Items, ItemView>: View where Items: Identifiable, Items: E
         self.onItemTap = onItemTap
     }
     
+    // MARK: - Body -
     var body: some View {
         List {
             ForEach(items) { item in

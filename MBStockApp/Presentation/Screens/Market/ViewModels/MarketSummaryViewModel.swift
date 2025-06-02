@@ -1,12 +1,5 @@
 //
-//  MarketViewModel.swift
-//  MBStockApp
-//
-//  Created by Serhan Khan on 30/05/2025.
-//
-
-//
-//  MarketViewModel.swift
+//  MarketSummaryViewModel.swift
 //  MBStockApp
 //
 //  Created by Serhan Khan on 30/05/2025.

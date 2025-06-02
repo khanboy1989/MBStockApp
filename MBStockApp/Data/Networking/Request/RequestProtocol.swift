@@ -8,11 +8,12 @@
 import Foundation
 import OSLog
 
+// MARK: - RequestProtocol
 protocol RequestProtocol {
-    var path: String { get }
-    var requestType: RequestType { get }
-    var headers: [String: String] { get }
-    var params: [String: Any] { get }
+    var path: String { get } // BaseURL
+    var requestType: RequestType { get } // RequestType .GET, .POST
+    var headers: [String: String] { get } // Generic header params
+    var params: [String: Any] { get } // Params for body and url
     var urlParams: [String: String?] { get }
 }
 
@@ -36,6 +37,8 @@ extension RequestProtocol {
         ]
     }
     
+    // MARK: - Request -
+    /// Generates the query with given parameters 
     func request() throws -> URLRequest {
         var components = URLComponents()
         components.scheme = "https"

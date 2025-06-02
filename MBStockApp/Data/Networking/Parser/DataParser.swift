@@ -9,18 +9,20 @@ import Foundation
 import os.log
 
 protocol DataParser {
-    func parse<T: Decodable>(data: Data) throws -> T
+  func parse<T: Decodable>(data: Data) throws -> T
 }
 
 /// Parsing Data to Given Model Type
 final class DefaultDataParser: DataParser {
     private var jsonDecoder: JSONDecoder
 
+    // MARK: - Init -
     init(jsonDecoder: JSONDecoder = .init()) {
         self.jsonDecoder = jsonDecoder
         self.jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
     }
-
+    
+    // MARK: - Generic Parser
     func parse<T: Decodable>(data: Data) throws -> T {
         do {
             return try jsonDecoder.decode(T.self, from: data)
@@ -32,7 +34,8 @@ final class DefaultDataParser: DataParser {
             throw error
         }
     }
-
+    
+    // MARK: - Logger Error 
     private func logDecodingError<T>(_ error: DecodingError, type: T.Type, data: Data) {
         var message = "🧨 Decoding error while decoding \(type):\n"
 
