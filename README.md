@@ -113,15 +113,45 @@ MBStockApp is built using **Clean Architecture** principles. Each layer has a de
 
 ```text
 MBStockApp/
-├── Views/          → SwiftUI views and navigation components
-├── ViewModels/     → State management, business flow, Combine publishers
-├── UseCases/       → Scenario-specific business logic abstractions
-├── Repository/     → Bridges between data sources and use cases (mapping, orchestration)
-├── DataSource/     → Low-level raw data providers (mocked or remote)
-├── Models/         → DTOs and domain models (parsed and mapped)
-├── Resources/      → Localized strings, assets, constants
-├── Tests/          → Unit tests and test mocks
+├── Core/                        → Dependency Injection, Routing, Extensions, Logger
+│   ├── DI/                      → Swinject container and DI setup
+│   ├── Extensions/              → Helper extensions (e.g. Double+String)
+│   ├── Routing/                 → App-wide navigation system
+│   └── Utils/                   → Logger, helpers, etc.
 
+├── Data/                        → API integration and mappers
+│   ├── Constants/               → Static keys, enums, etc.
+│   ├── Mappers/                 → DTO → Domain mappers
+│   ├── Model/                   → DTOs from API responses
+│   ├── Networking/              → HTTP services
+│   ├── Repository/              → Implementation of `MarketRepository`
+│   └── DataSource/Remote/       → Concrete remote data source (e.g., MarketsDataSource)
+
+├── Domain/                      → Pure business logic
+│   ├── Entity/                  → Domain models like `MarketSummary`, `MarketQuote`
+│   ├── Errors/                  → Custom app/domain errors
+│   ├── Repository/              → Abstract protocol for MarketRepository
+│   └── UseCase/                 → Use case logic (e.g., `GetMarketSummaryUC`)
+
+├── Localisation/                → App-localized strings
+│   └── Localizable/             → `Localizable.strings` and access helpers
+
+├── Presentation/                → UI-specific logic and structure
+│   ├── Core/ViewModel/          → ViewModels not tied to specific screens
+│   └── Screens/
+│       └── Market/
+│           ├── Destination/     → Navigation enums or routing logic
+│           ├── ViewModels/      → ViewModels for each screen
+│           └── Views/           → SwiftUI screens
+
+├── ReusableViews/               → Reusable UI components (e.g., `MarketRowView`, `BaseStateView`)
+
+├── Resources/Assets/            → Images, icons, app branding
+
+├── MBStockAppApp/               → App entry point (e.g., `@main`, Swinject setup)
+├── MBStockAppTests/             → Unit tests
+├── MBStockAppUITests/           → UI automation tests
+```
 ---
 
 ## 🧪 Running Tests
